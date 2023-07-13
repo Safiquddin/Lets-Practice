@@ -1,0 +1,47 @@
+ Readonly user Creation in linux 
+
+ 
+
+Here are the steps to create readonly user with read access to all files/dirs on linux server. 
+
+You need to install the package 'acl', then only can use the setfacl command - sudo yum install acl -y 
+
+ All these operations need to be done with sudo permsission 
+
+Create a readonly user 
+
+sudo adduser -m -s /bin/bash readonlyuser 
+
+sudo passwd readonlyuser  
+
+Replace "PasswordAuthentication no to yes" for password based authentication without pem 
+
+sed -ie 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config 
+
+ sudo systemctl restart sshd 
+
+Add read-only execution to directories 
+
+sudo find / -type d -name "*" | setfacl -dm u:readonlyuser:rx - 
+
+(you can add ! -path “<dir>” , for each dir you don't want to touch, like /proc, /sys, /etc etc) 
+
+Add read-only for files 
+
+sudo find / -type f -name "*" | setfacl -dm u:readonlyuser:r - 
+
+To add execution rights to /bin, /usr 
+
+sudo setfacl -Rm u:readonlyuser:rx  /bin/* /usr/bin/* /usr/lib/* /usr/lib64/* /usr/sbin/* /usr/libexec/* 
+
+ 
+
+ 
+
+Note: - 
+
+To displays the access permissions of files and directories- getfacl /path/to/dir or file 
+
+To remove permissions from the ACL - setfacl -x u:readonlyuser /path/to/dir or file 
+
+ 
