@@ -3,16 +3,11 @@
 function sendEmail() {
   // Define the list of recipient email addresses as an array
   var recipientEmails = [
-    // "khangayasuddin99@gmail.com",
-    // "rajutarannum143@gmail.com",
-    // "banumuskaan998@gmail.com",
-    // "khatunsahara77@gmail.com",
-    // "tabassumsheikh2708@gmail.com",
-    // "mdkutubuddin33@gmail.com",
-    // "shad.prwez@gmail.com",
+    "mdkutubuddin33@gmail.com",
+    "shad.prwez@gmail.com",
     "khanjordan440@gmail.com"
   ];
-  var hindirecipients = "banumuskaan998@gmail.com,mdkutubuddin33@gmail.com,safiquddinkhan@gmail.com,khanjordan440@gmail.com";
+  var hindirecipients = "banumuskaan998@gmail.com,mdkutubuddin33@gmail.com,khanjordan440@gmail.com,shad.prwez@gmail.com";
 
   // // All recipients' addresses separated by a comma for CC - recipients = recipientEmails.join(',');
   
@@ -50,6 +45,7 @@ function sendEmail() {
       "Safiquddin Khan";
     // MailApp.sendEmail(to, replyTo, subject, body)
     MailApp.sendEmail(recipient, subject, emailBody);
+    debugger;
   }
 }
 
@@ -60,7 +56,7 @@ function getEnglishJoke(recipient) {
     var apiUrl = "https://official-joke-api.appspot.com/random_joke?seed=" + seed;
     var response = UrlFetchApp.fetch(apiUrl);
     var jokeData = JSON.parse(response.getContentText());
-    return jokeData.setup + ":" + jokeData.punchline;
+    return jokeData.setup + ": " + jokeData.punchline;
   } catch (error) {
     // Handle any errors that occur during the API request
     console.error("Error fetching a joke: " + error);
