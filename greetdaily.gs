@@ -3,6 +3,11 @@
 function sendEmail() {
   // Define the list of recipient email addresses as an array
   var recipientEmails = [
+    "khangayasuddin99@gmail.com",
+    "rajutarannum143@gmail.com",
+    "banumuskaan998@gmail.com",
+    "khatunsahara77@gmail.com",
+    "tabassumsheikh2708@gmail.com",
     "mdkutubuddin33@gmail.com",
     "shad.prwez@gmail.com",
     "khanjordan440@gmail.com"
@@ -119,6 +124,7 @@ function senderName(email) {
   name = name.replace(/[0-9]+/g, ''); // Remove any numbers
   name = name.replace(/[^a-zA-Z ]/g, ''); // Remove any special characters
   name = name.trim(); // Remove leading and trailing spaces
+  name = name.charAt(0).toUpperCase() + name.slice(1); // Capitalize the first letter
   return name;
 }
 
