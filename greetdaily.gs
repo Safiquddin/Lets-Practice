@@ -117,6 +117,14 @@ function getQuote() {
   }
 }
 
+function senderName(recipient) {
+  var name = email.split("@")[0]; // Get the part before the @ symbol
+  name = name.replace(/[0-9]+/g, ''); // Remove any numbers
+  name = name.replace(/[^a-zA-Z ]/g, ''); // Remove any special characters
+  name = name.trim(); // Remove leading and trailing spaces
+  return name;
+}
+
 var getName = {
   'khangayasuddin99@gmail.com': 'Gayasuddin Khan',
   'rajutarannum143@gmail.com': 'MD Shamshad',
@@ -126,14 +134,6 @@ var getName = {
   'tabassumsheikh2708@gmail.com': 'Tabassum Nisha',
   'safiquddinkhan@gmail.com': 'Safiquddin Khan',
 }; 
-
-function senderName(recipient) {
-  var name = email.split("@")[0]; // Get the part before the @ symbol
-  name = name.replace(/[0-9]+/g, ''); // Remove any numbers
-  name = name.replace(/[^a-zA-Z ]/g, ''); // Remove any special characters
-  name = name.trim(); // Remove leading and trailing spaces
-  return name;
-}
 
 var dayMessages = {
   'Sunday': 'Wishing you a relaxing and peaceful Sunday.',
