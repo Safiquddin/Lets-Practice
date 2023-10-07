@@ -1,0 +1,69 @@
+// this is a deploy html for dailymail.js
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Daily Email Sender</h1>
+  <p>Click the button below to send the daily email:</p>
+  <button id="sendEmailButton">Send Email</button>
+
+  <!-- Add a paragraph element to display the quota remaining -->
+  <p>Email Quota Remaining: <span id="quotaRemaining"></span></p>
+
+  <!-- Add a paragraph element to display errors -->
+  <p class="error" id="errorMessage"></p>
+
+  <script>
+    document.getElementById("sendEmailButton").addEventListener("click", function() {
+      google.script.run.withSuccessHandler(function(quotaRemaining) {
+        alert("Daily emails are being sent!");
+        document.getElementById("quotaRemaining").textContent = quotaRemaining;
+        document.getElementById("errorMessage").textContent = ''; // Clear any previous errors
+      }).withFailureHandler(function(error) {
+        document.getElementById("errorMessage").textContent = error;
+      }).sendEmail();
+    });
+
+    // Function to update the quota remaining after sending email
+    function updateQuotaRemaining() {
+      google.script.run.withSuccessHandler(function(quotaRemaining) {
+        document.getElementById("quotaRemaining").textContent = quotaRemaining;
+      }).getQuotaRemaining();
+    }
+
+    // Initialize the quota remaining on page load
+    window.onload = function() {
+      updateQuotaRemaining();
+    };
+  </script>
+</body>
+</html>
