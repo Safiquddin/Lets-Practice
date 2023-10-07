@@ -12,9 +12,9 @@ This repo has many shell script scenarios
 ex:- when i type in xyz then it should execute who, ls, pwd one after the other
 3. search the files based on size ( hint use find command )
    find /path/to/search -type f -size +100k -size -1M
-   ```
-   find /path/to/search -type f -exec du -h {} + | sort -rh | head -n 10
-   ```
+```
+find /path/to/search -type f -exec du -h {} + | sort -rh | head -n 10
+```
 4. difference between running script as sh script_name & ./script_name
 ```
 sh script_name: This command explicitly specifies that the script should be run using the Bourne shell (sh) as the interpreter. It doesn't rely on the script's shebang (#!/bin/sh) line if it has one. This means that even if the script has a different shebang, such as #!/bin/bash, running it with sh will use the Bourne shell.
