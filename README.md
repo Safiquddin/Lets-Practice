@@ -100,6 +100,7 @@ fi
 9. script to check whether given string is palindrome or not ( string has to sent has param ), if user doesnt send any param i need print a message saying please supply string for which i want check palindrome condition?
 ```
 #!/bin/bash
+set -x
 # Check if the user provided a string as a parameter
 if [ $# -eq 0 ]; then
     echo "Please supply a string to check for palindrome condition."
