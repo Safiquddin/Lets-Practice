@@ -22,7 +22,7 @@ function sendEmail() {
   // Loop through the recipientEmails array and send an email to each recipient
   for (var i = 0; i < recipientEmails.length ; i++) {
     var recipient = recipientEmails[i];
-    var recipientName = getName[recipient] || senderName(recipient);
+    var recipientName = getName[recipient] || senderName(recipient) ;
     var dayOfWeek = getDayOfWeek();
     var englishJoke = getEnglishJoke(recipient); 
     // Determine whether to send an custom joke or a Hindi joke based on the recipient's email address
@@ -48,7 +48,7 @@ function sendEmail() {
       "Take good care of yourself and make the most of this beautiful day! \n\n" +
       "With all my love,\n" +
       "Safiquddin Khan";
-    MailApp.sendEmail(to, replyTo, subject, body)
+    // MailApp.sendEmail(to, replyTo, subject, body)
     MailApp.sendEmail(recipient, subject, emailBody);
   }
 }
@@ -118,7 +118,7 @@ function getQuote() {
   }
 }
 
-function senderName(recipient) {
+function senderName(email) {
   var name = email.split("@")[0]; // Get the part before the @ symbol
   name = name.replace(/[0-9]+/g, ''); // Remove any numbers
   name = name.replace(/[^a-zA-Z ]/g, ''); // Remove any special characters
