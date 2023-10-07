@@ -1,20 +1,26 @@
 // Send daily emails with positive messages, jokes, fun facts, and quotes to a list of recipients.
-
+function doGet(e) {
+  return HtmlService.createTemplateFromFile('index')
+    .evaluate()
+    .setTitle('Daily Email Sender')
+    .setSandboxMode(HtmlService.SandboxMode.IFRAME);
+}
 function sendEmail() {
   // Define the list of recipient email addresses as an array
   var recipientEmails = [
+    "khanjordan440@gmail.com",
     "khangayasuddin99@gmail.com",
     "rajutarannum143@gmail.com",
     "banumuskaan998@gmail.com",
     "khatunsahara77@gmail.com",
     "tabassumsheikh2708@gmail.com",
     "mdkutubuddin33@gmail.com",
-    "shad.prwez@gmail.com",
-    "khanjordan440@gmail.com"
+    "shad.perwez@gmail.com",
+    "safiquddinkhan@gmail.com"
   ];
-  var hindirecipients = "banumuskaan998@gmail.com,mdkutubuddin33@gmail.com,khanjordan440@gmail.com,shad.prwez@gmail.com";
-
-  // // All recipients' addresses separated by a comma for CC - recipients = recipientEmails.join(',');
+  var hindirecipients = "banumuskaan998@gmail.com,mdkutubuddin33@gmail.com,khanjordan440@gmail.com,shad.perwez@gmail.com";
+  // var recipientEmails = hindirecipients.split(",");
+  // All recipients' addresses separated by a comma for CC - recipients = recipientEmails.join(',');
   
   // Subject of the email
   var subject = getTimeOfDay() + ", It's " + getDayOfWeek();
