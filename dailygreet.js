@@ -1,10 +1,10 @@
 // Send daily emails with positive messages, jokes, fun facts, and quotes to a list of recipients.
 function doGet(e) {
-  return HtmlService.createTemplateFromFile('index')
-    .evaluate()
+  return HtmlService.createHtmlOutputFromFile('index')
     .setTitle('Daily Email Sender')
     .setSandboxMode(HtmlService.SandboxMode.IFRAME);
 }
+
 
 function sendEmail() {
   // Define the list of recipient email addresses and names as an object
@@ -16,8 +16,8 @@ function sendEmail() {
     'khatunsahara77@gmail.com': 'Sahara Khatun',
     'mdkutubuddin33@gmail.com': 'MD Kutubuddin',
     'tabassumsheikh2708@gmail.com': 'Tabassum Nisha',
-    'safiquddinkhan@gmail.com': 'Safiquddin Khan',
     'realshad07@gmail.com': 'Shad Perwez',
+    'safiquddinkhan@gmail.com': 'Safiquddin Khan',
   };
 
   // Define the list of recipients for whom you want to send Hindi jokes
@@ -62,8 +62,9 @@ function sendEmail() {
         "Safiquddin Khan";
       // MailApp.sendEmail(to, replyTo, subject, body)
       MailApp.sendEmail(recipientEmail, subject, emailBody);
+      Logger.log("Email sent successfully to " + recipientEmail);
+      // return 'Daily email sent successfully sent'
     }
-    return 'Daily emails sent successfully.';
   } catch (error) {
     // Handle errors and return an error message
     Logger.log('Error: ' + error.message);
@@ -175,6 +176,7 @@ function getTimeOfDay() {
     return "Good Evening 🌙";
   }
 }
+
 // Get the remaining daily email quota
 function getQuotaRemaining() {
   var emailQuotaRemaining = MailApp.getRemainingDailyQuota();
