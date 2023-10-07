@@ -1,0 +1,41 @@
+// greetdaily.gs dependancy html file
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Daily Email Sender</h1>
+  <p>Click the button below to send the daily email:</p>
+  <button id="sendEmailButton">Send Email</button>
+
+  <script>
+    document.getElementById("sendEmailButton").addEventListener("click", function() {
+      google.script.run.sendEmail();
+      alert("Daily emails are being sent!");
+    });
+  </script>
+</body>
+</html>
