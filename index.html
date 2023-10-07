@@ -36,6 +36,9 @@
   <p>Click the button below to send the daily email:</p>
   <button id="sendEmailButton">Send Email</button>
 
+  <!-- Add a link element with an initial empty href -->
+  <a id="ExecutionsLink" href="https://script.google.com/home/projects/161G-77Z9OPj-Zg2lwcFmXQI3oOsmYlP6Iw4oPe5QdXJEioul3ITUzvtD/executions" style="display: none;">Download Link</a>
+
   <!-- Add a paragraph element to display the log output -->
   <p>Log Output:</p>
   <pre id="logOutput"></pre>
@@ -52,6 +55,10 @@
       }).withFailureHandler(function(error) {
         document.getElementById("errorMessage").textContent = error;
       }).sendEmail();
+
+      // Update the link's href attribute when the button is clicked
+      document.getElementById("ExecutionsLink").href = 'https://script.google.com/home/projects/161G-77Z9OPj-Zg2lwcFmXQI3oOsmYlP6Iw4oPe5QdXJEioul3ITUzvtD/executions'; // Clear the previous link
+      document.getElementById("ExecutionsLink").style.display = "block"; // Show the link
     });
 
     // Function to update the quota remaining after sending email
