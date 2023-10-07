@@ -1,8 +1,5 @@
-
-   <!--  this is a deploy html for greetdaily.gs dependancy html file --> 
-   <!--  this is a deploy html for dailygreet.js --> 
+<!-- This is a deployment HTML for greetdaily.js -->
 <!DOCTYPE html>
-
 <html>
 <head>
   <base target="_top">
@@ -39,17 +36,18 @@
   <p>Click the button below to send the daily email:</p>
   <button id="sendEmailButton">Send Email</button>
 
-  <!-- Add a paragraph element to display the quota remaining -->
-  <p>Output: <span id="result"></span></p>
+  <!-- Add a paragraph element to display the log output -->
+  <p>Log Output:</p>
+  <pre id="logOutput"></pre>
 
   <!-- Add a paragraph element to display errors -->
   <p class="error" id="errorMessage"></p>
 
   <script>
     document.getElementById("sendEmailButton").addEventListener("click", function() {
-      google.script.run.withSuccessHandler(function(result) {
+      google.script.run.withSuccessHandler(function(logOutput) {
         alert("Daily emails are being sent!");
-        document.getElementById("result").textContent = result;
+        document.getElementById("logOutput").textContent = logOutput;
         document.getElementById("errorMessage").textContent = ''; // Clear any previous errors
       }).withFailureHandler(function(error) {
         document.getElementById("errorMessage").textContent = error;
@@ -58,8 +56,8 @@
 
     // Function to update the quota remaining after sending email
     function updateQuotaRemaining() {
-      google.script.run.withSuccessHandler(function(result) {
-        document.getElementById("result").textContent = result;
+      google.script.run.withSuccessHandler(function(logOutput) {
+        document.getElementById("logOutput").textContent = logOutput;
       }).getQuotaRemaining();
     }
 
