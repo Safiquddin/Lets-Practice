@@ -10,14 +10,14 @@ function sendEmail() {
   // Define the list of recipient email addresses and names as an object
   var recipients = {
     'khanjordan440@gmail.com': '',
-    // 'khangayasuddin99@gmail.com': 'Gayasuddin Khan',
-    // 'rajutarannum143@gmail.com': 'MD Shamshad',
-    // 'banumuskaan998@gmail.com': 'Muskaan Banu',
-    // 'khatunsahara77@gmail.com': 'Sahara Khatun',
-    // 'mdkutubuddin33@gmail.com': 'MD Kutubuddin',
-    // 'tabassumsheikh2708@gmail.com': 'Tabassum Nisha',
-    // 'safiquddinkhan@gmail.com': 'Safiquddin Khan',
-    // 'realshad07@gmail.com': 'Shad Perwez',
+    'khangayasuddin99@gmail.com': 'Gayasuddin Khan',
+    'rajutarannum143@gmail.com': 'MD Shamshad',
+    'banumuskaan998@gmail.com': 'Muskaan Banu',
+    'khatunsahara77@gmail.com': 'Sahara Khatun',
+    'mdkutubuddin33@gmail.com': 'MD Kutubuddin',
+    'tabassumsheikh2708@gmail.com': 'Tabassum Nisha',
+    'safiquddinkhan@gmail.com': 'Safiquddin Khan',
+    'realshad07@gmail.com': 'Shad Perwez',
   };
 
   // Define the list of recipients for whom you want to send Hindi jokes
@@ -67,7 +67,8 @@ function sendEmail() {
   } catch (error) {
     // Handle errors and return an error message
     Logger.log('Error: ' + error.message);
-    return 'Error: ' + error.message;
+    // return 'Error: ' + error.message;
+    throw error;
   }
   debugger;
 }
