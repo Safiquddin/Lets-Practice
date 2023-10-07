@@ -3,13 +3,13 @@
 function sendEmail() {
   // Define the list of recipient email addresses as an array
   var recipientEmails = [
-    "khangayasuddin99@gmail.com",
-    "rajutarannum143@gmail.com",
-    "banumuskaan998@gmail.com",
-    "khatunsahara77@gmail.com",
-    "tabassumsheikh2708@gmail.com",
-    "mdkutubuddin33@gmail.com",
-    "shad.prwez@gmail.com",
+    // "khangayasuddin99@gmail.com",
+    // "rajutarannum143@gmail.com",
+    // "banumuskaan998@gmail.com",
+    // "khatunsahara77@gmail.com",
+    // "tabassumsheikh2708@gmail.com",
+    // "mdkutubuddin33@gmail.com",
+    // "shad.prwez@gmail.com",
     "khanjordan440@gmail.com"
   ];
   var hindirecipients = "banumuskaan998@gmail.com,mdkutubuddin33@gmail.com,safiquddinkhan@gmail.com";
@@ -29,9 +29,8 @@ function sendEmail() {
     var joke;
     if (hindirecipients.includes(recipient)) {
       var apiUrl = "https://v2.jokeapi.dev/joke/Any?format=txt";
-      var includeEnglishJoke = Math.random() < 0.5; // 50% chance of including an English joke
-      joke = includeEnglishJoke ? getCustomJoke(apiUrl) : getHindiJoke(); // Randomly select a joke
-      joke = getHindiJoke();
+      var probability = Math.random() < 0.5; // 50% chance of including an English joke
+      joke = probability ? getCustomJoke(apiUrl) : getHindiJoke(); // Randomly select a joke
     } else {
       // Send custom joke for others
       var apiUrl = "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,sexist&format=txt";
@@ -162,7 +161,7 @@ function getTimeOfDay() {
   } else if (hours >= 12 && hours < 17) {
     return "🌅 Good Afternoon";
   } else {
-    return "🌙 Good Evening";
+    return "🌙 Good Evening 🌙";
   }
 }
 // Get the remaining daily email quota
