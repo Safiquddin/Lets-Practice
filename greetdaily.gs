@@ -84,7 +84,7 @@ function getHindiJoke() {
 
 function getCustomJoke(apiUrl) {
   try {
-    // Make an HTTP GET request to the custom JokeAPI endpoint
+    // Make an HTTP GET request to the custom JokeAPI endpoint - https://jokeapi.dev/#langcodes-endpoint
     var response = UrlFetchApp.fetch(apiUrl);
     var response = UrlFetchApp.fetch(apiUrl);
     var jokeText = response.getContentText();
