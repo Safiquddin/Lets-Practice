@@ -28,12 +28,14 @@ function sendEmail() {
     // Determine whether to send an custom joke or a Hindi joke based on the recipient's email address
     var joke;
     if (hindirecipients.includes(recipient)) {
+      var apiUrl = "https://v2.jokeapi.dev/joke/Any?format=txt";
       var includeEnglishJoke = Math.random() < 0.5; // 50% chance of including an English joke
-      joke = includeEnglishJoke ? getCustomJoke() : getHindiJoke(); // Randomly select a joke
+      joke = includeEnglishJoke ? getCustomJoke(apiUrl) : getHindiJoke(); // Randomly select a joke
       joke = getHindiJoke();
     } else {
       // Send custom joke for others
-      joke = getCustomJoke();
+      var apiUrl = "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,sexist&format=txt";
+      joke = getCustomJoke(apiUrl);
     }
     var emailBody = "Dear " + recipientName + ",\n\n" +
       (dayMessages[dayOfWeek] || "Have a great day!") + "\n\n" +
@@ -80,16 +82,16 @@ function getHindiJoke() {
   }
 }
 
-function getCustomJoke() {
+function getCustomJoke(apiUrl) {
   try {
     // Make an HTTP GET request to the custom JokeAPI endpoint
-    var apiUrl = "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,sexist&format=txt";
+    var response = UrlFetchApp.fetch(apiUrl);
     var response = UrlFetchApp.fetch(apiUrl);
     var jokeText = response.getContentText();
     return jokeText;
   } catch (error) {
     console.error("Error fetching a custom joke: " + error);
-    return "Unable to fetch a custom joke at the moment.";
+    return "Algorithm: A word used by programmers when they don't want to explain how their code works.";
   }
 }
 
