@@ -12,7 +12,7 @@ function sendEmail() {
     // "shad.prwez@gmail.com",
     "khanjordan440@gmail.com"
   ];
-  var hindirecipients = "banumuskaan998@gmail.com,mdkutubuddin33@gmail.com,safiquddinkhan@gmail.com";
+  var hindirecipients = "banumuskaan998@gmail.com,mdkutubuddin33@gmail.com,safiquddinkhan@gmail.com,khanjordan440@gmail.com";
 
   // // All recipients' addresses separated by a comma for CC - recipients = recipientEmails.join(',');
   
@@ -39,8 +39,8 @@ function sendEmail() {
     var emailBody = "Dear " + recipientName + ",\n\n" +
       (dayMessages[dayOfWeek] || "Have a great day!") + "\n\n" +
       "Here's to another day of laughter, love, and making wonderful memories together as a family ❤️.\n\n" +
-      "As the sun rises, may you find happiness and success filled with positivity in everything you do today.\n" +
-      "Here's a joke to start your day with a smile:\n" + englishJoke + "\n" +
+      "As the sun rises, may you find happiness, success, and be filled with positivity in everything you do today.\n\n" +
+      "Here's a joke to start your day with a smile:\n" + englishJoke + "\n\n" +
       "Here's another joke for an extra smile:\n" + joke + "\n\n" +
       "Funfact for you:\n" + getFunFact() + "\n\n" +
       "Your daily quote:\n" + getQuote() + "\n\n" +
@@ -157,11 +157,11 @@ function getTimeOfDay() {
   var currentTime = new Date();
   var hours = currentTime.getHours();
   if (hours >= 5 && hours < 12) {
-    return "🌞 Good Morning";
+    return "Good Morning 🌞";
   } else if (hours >= 12 && hours < 17) {
-    return "🌅 Good Afternoon";
+    return "Good Afternoon 🌅";
   } else {
-    return "🌙 Good Evening 🌙";
+    return "Good Evening 🌙";
   }
 }
 // Get the remaining daily email quota
