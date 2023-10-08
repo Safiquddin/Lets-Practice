@@ -4,7 +4,7 @@
   <base target="_top">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Safiquddin Khan - Public Profile</title>
+  <title>Greet Mail Sender</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <style>
     body {
@@ -70,47 +70,61 @@
       overflow-x: auto;
       font-family: monospace;
     }
+    @media screen and (max-width: 600px) {
+      .profile-container {
+        margin: 10px;
+        padding: 10px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="profile-container">
-  <h1>Welcome to Daily Email Sender</h1>
-  <p>This page is designed by Safiquddin Khan</p>
-  <a href="https://www.instagram.com/safiq_khan/" aria-label="Instagram" class="social-badge">
-    <i class="fab fa-instagram"></i> Instagram
-  </a>
+    <h1>Welcome to Greet Email Sender</h1>
+    <p>This page is designed by Safiquddin Khan</p>
+    <!-- Links to your social profiles -->
+    <a href="https://www.instagram.com/safiq_khan/" aria-label="Instagram" class="social-badge">
+      <i class="fab fa-instagram"></i> Instagram
+    </a>
 
-  <a href="https://github.com/safiqkhan" target="_blank" aria-label="GitHub" class="social-badge">
-    <i class="fab fa-github"></i> GitHub
-  </a>
+    <a href="https://github.com/safiqkhan" target="_blank" aria-label="GitHub" class="social-badge">
+      <i class="fab fa-github"></i> GitHub
+    </a>
 
-  <a href="https://www.linkedin.com/in/safiqkhan" target="_blank" aria-label="LinkedIn" class="social-badge">
-    <i class="fab fa-linkedin"></i> LinkedIn
-  </a>
-  <h3>Click the button below to send the daily email:</h3>
-
-  <button id="sendEmailButton" aria-label="Send Email">Send Email</button>
+    <a href="https://www.linkedin.com/in/safiqkhan" target="_blank" aria-label="LinkedIn" class="social-badge">
+      <i class="fab fa-linkedin"></i> LinkedIn
+    </a>
+    <h3>Click the button below to send the daily email:</h3>
+    <!-- Input field for recipient's email -->
+    <input type="email" id="inputRecipient" placeholder="Recipient's Email" aria-label="Recipient's Email">
+    <!-- Button to send the email -->
+    <button id="sendEmailButton" aria-label="Send Email">Send Email</button>
 
     <!-- Add a link element with an initial empty href -->
-  <a id="ExecutionsLink" href="https://script.google.com/home/projects/161G-77Z9OPj-Zg2lwcFmXQI3oOsmYlP6Iw4oPe5QdXJEioul3ITUzvtD/executions" style="display: none;">Executions Status</a>
+    <a id="ExecutionsLink" href="https://script.google.com/home/projects/161G-77Z9OPj-Zg2lwcFmXQI3oOsmYlP6Iw4oPe5QdXJEioul3ITUzvtD/executions" style="display: none;">Executions Status</a>
 
     <!-- Add a paragraph element to display the log output -->
-  <p>Log Output:</p>
-  <pre id="logOutput"></pre>
+    <p>Log Output:</p>
+    <pre id="logOutput"></pre>
 
     <!-- Add a paragraph element to display errors -->
-  <p class="error" id="errorMessage"></p>
+    <p class="error" id="errorMessage"></p>
   </div>
 
   <script>
+    // JavaScript code for handling user interactions
     document.getElementById("sendEmailButton").addEventListener("click", function() {
+      // Get the recipient's email from the input field
+      var inputRecipient = document.getElementById("inputRecipient").value;
+
+      // Call the server-side function to send the email
       google.script.run.withSuccessHandler(function(logOutput) {
-        alert("Daily emails are being sent!");
+        alert("Greet Function submitted, Check Log Output.");
         document.getElementById("logOutput").textContent = logOutput;
         document.getElementById("errorMessage").textContent = ''; // Clear any previous errors
       }).withFailureHandler(function(error) {
         document.getElementById("errorMessage").textContent = error;
-      }).sendEmail();
+      }).sendEmail(inputRecipient);
 
       // Update the link's href attribute when the button is clicked
       document.getElementById("ExecutionsLink").href = 'https://script.google.com/home/projects/161G-77Z9OPj-Zg2lwcFmXQI3oOsmYlP6Iw4oPe5QdXJEioul3ITUzvtD/executions';
