@@ -1,16 +1,56 @@
-<!-- This is a deployment HTML for greetdaily.js -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <base target="_top">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Safiquddin Khan - Public Profile</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
     }
 
     h1 {
       color: #333;
+    }
+
+    .profile-container {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+
+    .profile-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .profile-badge a {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    .social-badge {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: #333;
+      margin: 10px;
+    }
+
+    .social-badge i,
+    .social-badge img {
+      margin-right: 5px;
     }
 
     button {
@@ -19,6 +59,7 @@
       border: none;
       padding: 10px 20px;
       cursor: pointer;
+      border-radius: 4px;
     }
 
     button:hover {
@@ -29,22 +70,46 @@
       color: red;
       font-weight: bold;
     }
+
+    pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 4px;
+      text-align: left;
+      overflow-x: auto;
+      font-family: monospace;
+    }
   </style>
 </head>
 <body>
+  <div class="profile-container">
   <h1>Welcome to Daily Email Sender</h1>
-  <p>Click the button below to send the daily email:</p>
-  <button id="sendEmailButton">Send Email</button>
+  <p>This page is designed by Safiquddin Khan</p>
+  <a href="https://www.instagram.com/safiq_khan/" aria-label="Instagram" class="social-badge">
+    <i class="fab fa-instagram"></i> Instagram
+  </a>
 
-  <!-- Add a link element with an initial empty href -->
+  <a href="https://github.com/safiqkhan" target="_blank" aria-label="GitHub" class="social-badge">
+    <i class="fab fa-github"></i> GitHub
+  </a>
+
+  <a href="https://www.linkedin.com/in/safiqkhan" target="_blank" aria-label="LinkedIn" class="social-badge">
+    <i class="fab fa-linkedin"></i> LinkedIn
+  </a>
+  <p>Click the button below to send the daily email: </p>
+
+  <button id="sendEmailButton" aria-label="Send Email">Send Email</button>
+
+    <!-- Add a link element with an initial empty href -->
   <a id="ExecutionsLink" href="https://script.google.com/home/projects/161G-77Z9OPj-Zg2lwcFmXQI3oOsmYlP6Iw4oPe5QdXJEioul3ITUzvtD/executions" style="display: none;">Download Link</a>
 
-  <!-- Add a paragraph element to display the log output -->
+    <!-- Add a paragraph element to display the log output -->
   <p>Log Output:</p>
   <pre id="logOutput"></pre>
 
-  <!-- Add a paragraph element to display errors -->
+    <!-- Add a paragraph element to display errors -->
   <p class="error" id="errorMessage"></p>
+  </div>
 
   <script>
     document.getElementById("sendEmailButton").addEventListener("click", function() {
@@ -57,8 +122,8 @@
       }).sendEmail();
 
       // Update the link's href attribute when the button is clicked
-      document.getElementById("ExecutionsLink").href = 'https://script.google.com/home/projects/161G-77Z9OPj-Zg2lwcFmXQI3oOsmYlP6Iw4oPe5QdXJEioul3ITUzvtD/executions'; // Clear the previous link
-      document.getElementById("ExecutionsLink").style.display = "block"; // Show the link
+      document.getElementById("ExecutionsLink").href = 'https://script.google.com/home/projects/161G-77Z9OPj-Zg2lwcFmXQI3oOsmYlP6Iw4oPe5QdXJEioul3ITUzvtD/executions';
+      document.getElementById("ExecutionsLink").style.display = "block"; 
     });
 
     // Function to update the quota remaining after sending email
