@@ -34,8 +34,8 @@ function pi {
     } | ForEach-Object { Move-Item -Path $_.FullName -Destination $extractPath -Force }
     # List and count invoice files for the current date
     $files = Get-ChildItem -Path $extractPath -File | Where-Object {
-        $_.Name -match 'invoice' -or
-        $_.CreationTime.Date -eq (Get-Date).Date
+        $_.CreationTime.Date -eq (Get-Date).Date -or
+        $_.Name -match 'invoice'
     }
     # Open invoices to calculate prices
     if ($files.Count -gt 0) {
